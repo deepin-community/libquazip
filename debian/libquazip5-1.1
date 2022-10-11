@@ -1,0 +1,27 @@
+.TH QuaZIP 1 "14 July 2014"
+.SH NAME
+quazip - C++/Qt wrapper for UNZIP/ZIP
+.SH SYNOPSIS
+.B quazip
+.SH DESCRIPTION
+.B QuaZIP
+is a simple C++ wrapper over Gilles Vollant's ZIP/UNZIP package that
+can be used to access ZIP archives. It uses Trolltech's Qt toolkit.
+.
+.B QuaZIP
+allows you to access files inside ZIP archives using QIODevice API,
+and that means that you can also use QTextStream, QDataStream or
+whatever you would like to use on your zipped files.
+.
+.B QuaZIP
+provides complete abstraction of the ZIP/UNZIP API, for both reading
+from and writing to ZIP archives.
+.SH SEE ALSO
+.BR minizip (1),
+.BR miniunzip (1),
+.BR zlib (3),
+.BR zip (1).
+.SH AUTHOR
+This program was written by Sergey A. Tachenov.
+This manual page was written by Eric Maeker <eric.maeker@gmail.com>.
+

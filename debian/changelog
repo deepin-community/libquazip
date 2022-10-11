@@ -1,0 +1,333 @@
+libquazip (0.9.1-2) unstable; urgency=medium
+
+  [ Andreas Tille ]
+  * override_dh_auto_test: Create test executable manually to pass test
+  * Standards-Version: 4.6.0 (routine-update)
+  * Remove trailing whitespace in debian/changelog (routine-update)
+
+  [ Bas Couwenberg ]
+  * Update symbols for gcc-11.
+    Closes: #984206
+  * Override dh_makeshlibs to use upstream version and not fail on changes.
+
+ -- Andreas Tille <tille@debian.org>  Mon, 11 Oct 2021 21:43:56 +0200
+
+libquazip (0.9.1-1) unstable; urgency=medium
+
+  * New upstream version
+  * debhelper-compat 13 (routine-update)
+  * Update symbols for gcc-10
+    Closes: #957472
+
+ -- Andreas Tille <tille@debian.org>  Thu, 23 Jul 2020 15:48:10 +0200
+
+libquazip (0.9-2) unstable; urgency=medium
+
+  * Provide symbols only for amd64
+    Closes: #960826
+
+ -- Andreas Tille <tille@debian.org>  Mon, 18 May 2020 09:14:59 +0200
+
+libquazip (0.9-1) unstable; urgency=medium
+
+  [ Federico Ceratto ]
+  * New upstream release
+
+  [ Andreas Tille ]
+  * debhelper-compat 12 (routine-update)
+  * Add salsa-ci file (routine-update)
+  * Rules-Requires-Root: no (routine-update)
+  * Set upstream metadata fields: Bug-Database, Bug-Submit, Repository,
+    Repository-Browse.
+
+ -- Andreas Tille <tille@debian.org>  Sat, 16 May 2020 16:28:10 +0200
+
+libquazip (0.7.6-5) unstable; urgency=medium
+
+  * Remove obsolete fields Name from debian/upstream/metadata.
+  * Rely on pre-initialized dpkg-architecture variables.
+  * Fix day-of-week for changelog entries 0.4.4-1.
+  * Add d-shlibmove override
+
+ -- Andreas Tille <tille@debian.org>  Sat, 28 Sep 2019 08:30:05 +0200
+
+libquazip (0.7.6-4) unstable; urgency=medium
+
+  * Expected to pass new queue due to name change.  Since this is not
+    the case doing a source only upload
+
+ -- Alf Gaida <agaida@siduction.org>  Mon, 19 Aug 2019 14:37:06 +0200
+
+libquazip (0.7.6-3) unstable; urgency=medium
+
+  [ Alf Gaida ]
+  * Switched to debhelper-compat (=12)
+  * Removed obsolete build dependency libqt4-dev (Closes: #875026)
+  * Bumped Standards-Version to 4.4.0, no changes needed
+  * Removed Qt4 packages from control and fixed the description of Qt5 packages
+  * Modified debian/rules to fit Qt5 only builds
+  * Don't provide statically linked files anymore
+  * Added the now needed install files
+  * Fixed symbols for gcc-9
+  * Added Build-Depends-Package field to symbols
+  * Removed superfluous Section entry from libquazip5-1
+  * Removed obsolete libquazip5-headers package, combined with -dev,
+    -dev is useless without -headers and vice versa - and it doesn't hurt
+    if a cmake file is installed in non-cmake builds. Set Breaks and Replaces.
+  * Added myself to copyright
+  * Added myself to uploaders
+
+  [ Andreas Tille ]
+  * Remove Eric Maeker from Uploaders (thanks to Eric for his initial work)
+  * Set upstream metadata fields: Name.
+
+ -- Alf Gaida <agaida@siduction.org>  Sun, 18 Aug 2019 16:14:48 +0200
+
+libquazip (0.7.6-2) unstable; urgency=medium
+
+  * Versioned Breaks: libquazip-qt5-1 (<= 0.7-2)
+    Closes: #898957
+  * Standards-Version: 4.2.1
+  * Secure URI in copyright format
+  * Remove trailing whitespace in debian/rules
+
+ -- Andreas Tille <tille@debian.org>  Thu, 20 Dec 2018 14:53:30 +0100
+
+libquazip (0.7.6-1) unstable; urgency=medium
+
+  * Project moved to Github
+  * New upstream version
+    Closes: #902786
+  * Build-Depends: doxygen, graphviz
+  * Some optional symbols were removed
+  * Switch to d-shlibs
+
+ -- Andreas Tille <tille@debian.org>  Sun, 01 Jul 2018 20:26:59 +0200
+
+libquazip (0.7.3-7) unstable; urgency=medium
+
+  [ Alf Gaida ]
+  * Marked some symbols optional and described them as gcc8
+    Closes: #897794
+
+  [ Andreas Tille ]
+  * Point Vcs fields to salsa.debian.org
+  * Standards-Version: 4.1.4
+
+ -- Andreas Tille <tille@debian.org>  Sun, 06 May 2018 15:55:07 +0200
+
+libquazip (0.7.3-6) unstable; urgency=medium
+
+  [ Steve Langasek ]
+  * symbols adjustments to support build with -O3
+    Closes: #893808
+
+ -- Andreas Tille <tille@debian.org>  Thu, 29 Mar 2018 12:16:05 +0200
+
+libquazip (0.7.3-5) unstable; urgency=medium
+
+  * Enable arch build only
+    Closes: #891242
+
+ -- Andreas Tille <tille@debian.org>  Sun, 04 Mar 2018 21:02:42 +0100
+
+libquazip (0.7.3-4) unstable; urgency=medium
+
+  * Do not specify cmake version explicitly in debhelper install (Thanks for
+    the patch to Adrian Bunk <bunk@debian.org>)
+    Closes: #891222
+  * debhelper 11
+  * Standards-Version: 4.1.3
+  * Fix installation of docs
+
+ -- Andreas Tille <tille@debian.org>  Fri, 23 Feb 2018 17:10:42 +0100
+
+libquazip (0.7.3-3) unstable; urgency=medium
+
+  [ Alf Gaida <agaida@siduction.org> ]
+  * libquazip5-1 depends on libquazip5-headers instead of libquazip-headers
+    Closes: #884800
+  * Install cmake files
+    Closes: #778768
+  * debhelper with --fail-missing
+
+ -- Andreas Tille <tille@debian.org>  Wed, 20 Dec 2017 10:48:51 +0100
+
+libquazip (0.7.3-2) unstable; urgency=medium
+
+  * Add symbols files
+    Closes: #758011
+  * Standards-Version: 4.1.2
+
+ -- Andreas Tille <tille@debian.org>  Sun, 17 Dec 2017 17:05:25 +0100
+
+libquazip (0.7.3-1) unstable; urgency=medium
+
+  * New upstream version
+  * debhelper 10
+  * Fix dh_installchangelogs
+    Closes: #876886
+  * Remove unused lintian-override
+  * Standards-Version: 4.1.0 (no changes needed)
+
+ -- Andreas Tille <tille@debian.org>  Tue, 26 Sep 2017 22:14:40 +0200
+
+libquazip (0.7.2-1) unstable; urgency=medium
+
+  [ Stefan Ahlers ]
+  * New upstream version
+  * debian/patches:
+    - remove cmake-fix.patch because its applied upstream
+
+  [ Andreas Tille ]
+  * cme fix dpkg-control
+  * hardening=+bindnow
+
+ -- Stefan Ahlers <stef.ahlers@t-online.de>  Sat, 18 Jun 2016 16:02:57 +0100
+
+libquazip (0.7.1-1) unstable; urgency=medium
+
+  [Andreas Tille]
+  * New upstream version
+  * Enable changing suffix
+  * cme fix dpkg-control
+  * remove *-dbg packages since this is autogenerated now
+  * delete useless autogenerated doxygen files
+  * do not Build-Depend from metapackage qt5-default
+  * DEP5 fixes
+  * Move packaging to Git
+  * Remove deactivated patches
+  * Rename packages to reflect the library rename (s/-qt5/5/)
+  * Remove unused override
+
+  [Stefan Ahlers]
+  * Using CMake instead of qmake
+  * Replace -qt5 suffix with suffix provided by CMake (Closes: #805087)
+  * debian/patches:
+    - Because of using cmake, multiarch_version.patch,
+      quazip-qt5-target-name.patch and qztest-link-to-qt5.patch are obsolete
+    - Add cmake-fix.patch to backport unreleased changes from upstream
+  * Add package for Qt5 headers
+
+ -- Andreas Tille <tille@debian.org>  Fri, 08 Jan 2016 11:02:57 +0100
+
+libquazip (0.7-2) unstable; urgency=medium
+
+  [Eric Maeker]
+  * Add some missing Conflicts, Breaks, Replaces to headers package
+  * headers package was empty
+
+  [Andreas Tille]
+  * renaming package libquazip1-headers to libquazip-headers
+  * Add missing Conflicts / Breaks / Provides / Replaces statements
+    Closes: #755196
+
+ -- Eric Maeker <eric.maeker@gmail.com>  Wed, 13 Aug 2014 11:50:31 +0200
+
+libquazip (0.7-1) unstable; urgency=low
+
+  [ Eric Maeker ]
+  * New upstream
+  * debian/patches:
+    - Removed multiarch patch as it is now merged in upstream
+  * debian/control;debian/rules
+    - renaming package libquazip1-dev to libquazip-dev
+    - renaming package libquazip-qt5-1-dev to libquazip-qt5-dev
+
+ -- Eric Maeker <eric.maeker@gmail.com>  Sat, 09 Aug 2014 19:18:16 +0200
+
+libquazip (0.6.2-2) unstable; urgency=low
+
+  [ Eric Maeker ]
+  * debian/rules;debian/control;debian/*qt5*:
+     - renaming qt5 package libquazip1-qt5{...} to libquazip-qt5-1{...}
+  * debian/copyright:
+     - adding LGPL3 (Thanks to Thorsten Alteholz)
+  * debian/rules:
+     - managing conflicts/replaces between libquazip0 and libquazip1
+
+  [ Andreas Tille ]
+  * debian/control: libquazip1-dev Provides: libquazip-dev
+
+ -- Eric Maeker <eric.maeker@gmail.com>  Sun, 20 Jul 2014 10:47:03 +0200
+
+libquazip (0.6.2-1) unstable; urgency=low
+
+  [ Eric Maeker ]
+  * New upstream release
+  * debian/control:
+     - Standards-Version: 3.9.5
+  * debian/rules;debian/control;debian/*qt5*:
+     - Dual build: Qt4 & Qt5
+  * debian/rules
+     - including quazip unit-tests in override_dh_auto_test
+  * debian/*.lintian-overrides
+     - managing multiarch warnings
+  * patches:
+     - updating patches to new upstream
+     - "-qt5" in target and lib names
+  * patches;debian/control;debian/*.symbols*
+     - renaming libquazip0 to libquazip1, updating lib soname version
+     - library soname version was switched to the qmake project files defined
+       ABI version (1.0.0), not the code release version (Closes: #719742)
+
+  [ Andreas Tille ]
+  * debian/control: Fix Vcs fields using `cme fix dpkg-control`
+
+ -- Eric Maeker <eric.maeker@gmail.com>  Mon, 14 Jul 2014 16:22:38 +0200
+
+libquazip (0.5.1-2) unstable; urgency=low
+
+  [ Rohan Garg <rohangarg@kubuntu.org> ]
+  * Make sure libquazip-dev depends on zlib1g-dev (Closes: #712905)
+
+  [ Andreas Tille ]
+  * Remove the just created README.Debian that explains rather historic
+    status than the current package
+  * debian/control:
+     - Standards-Version: 3.9.4
+     - DM-Upload-Allowed removed
+     - cme fix dpkg-control
+
+ -- Andreas Tille <tille@debian.org>  Fri, 21 Jun 2013 08:27:25 +0200
+
+libquazip (0.5.1-1) unstable; urgency=low
+
+  [ Eric Maeker ]
+  * New upstream
+  * debian/patch: Updating patches (multiarch, remove tests)
+  * Static lib
+    * debian/rules: building the static version of the lib
+    * debian/libquazip0-dev.install: adding the static lib to the dev package
+  * debian/rules: libquazip0-headers was removed
+  * Adding debian/libquazip-doc.lintian-overrides
+
+  [ Andreas Tille ]
+  * remove debian/d-{devlibdeps,shlibmove} which were injected as a hack
+    aroung not yet working d-shlibs but are not used anyway
+
+ -- Eric Maeker <eric.maeker@gmail.com>  Mon, 18 Mar 2013 18:02:42 +0100
+
+libquazip (0.5-1) unstable; urgency=low
+
+  [ Eric Maeker ]
+  * New upstream
+  * creating multi-arch binaries
+    * debian/rules
+    * debian/libquazip0.install
+    * debian/libquazip0-dev.install
+  * debian/copyright: removed symlink
+  * including upstream changelog in all packages
+  * debian/libquazip-doc: lintian overrides duplicate files
+
+  [ Andreas Tille ]
+  * debian/control: removed dependency from libquazip0-headers
+    which is no part of the package
+
+ -- Eric Maeker <eric.maeker@gmail.com>  Tue, 18 Dec 2012 08:34:13 +0100
+
+libquazip (0.4.4-1) unstable; urgency=low
+
+  * Initial release (Closes: #675276)
+
+ -- Eric Maeker <eric.maeker@gmail.com>  Wed, 30 May 2012 12:00:00 +0100

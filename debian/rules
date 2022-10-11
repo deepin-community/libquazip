@@ -1,0 +1,89 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+# This code is released under the BSD-3 Clause
+# Created by Eric Maeker, 2012 - 2014
+# Modified by Stefan Ahlers, 2016
+
+# Uncomment this to turn on verbose mode.
+export DH_VERBOSE=1
+
+export DEB_BUILD_MAINT_OPTIONS = hardening=+bindnow
+
+QT_SELECT=qt5
+
+include /usr/share/dpkg/pkg-info.mk
+
+UPSTREAM_VERSION = $(shell echo $(DEB_VERSION_UPSTREAM) | sed -e 's/\+.*//')
+
+# Enable multiarch builds & prepare qmake vars
+include /usr/share/dpkg/architecture.mk
+
+
+%:
+	dh $@ -buildsystem qmake
+
+override_dh_auto_configure:
+	dh_auto_configure -- \
+		-DBUILD_WITH_QT4=OFF \
+		-DLIB_SUFFIX=/$(DEB_HOST_MULTIARCH) \
+		-DCMAKE_POSITION_INDEPENDENT_CODE=ON
+	cp NEWS.txt NEWS
+
+override_dh_auto_configure_in_version_1.1:
+	dh_auto_configure -Bbuild-shared -- \
+		-DBUILD_WITH_QT4=OFF \
+		-DLIB_SUFFIX=/$(DEB_HOST_MULTIARCH) \
+		-DCMAKE_POSITION_INDEPENDENT_CODE=ON
+	dh_auto_configure -Bbuild-static -- \
+		-DBUILD_WITH_QT4=OFF \
+		-DLIB_SUFFIX=/$(DEB_HOST_MULTIARCH) \
+		-DCMAKE_POSITION_INDEPENDENT_CODE=ON \
+		-DBUILD_SHARED_LIBS=OFF
+	cp NEWS.txt NEWS
+
+override_dh_auto_build:
+	dh_auto_build # -Bbuild-shared
+	# dh_auto_build -Bbuild-static
+	# build doc
+	doxygen
+
+override_dh_auto_clean:
+	dh_auto_clean
+	$(RM) -r doc
+	$(RM) NEWS
+
+override_dh_installchangelogs:
+	dh_installchangelogs -k NEWS
+
+override_dh_installdocs-indep:
+	dh_installdocs -i
+	find debian -name "*.md5" -delete
+
+override_dh_auto_install_in_version_1.1:
+	dh_auto_install -Bbuild-shared --destdir=debian/tmp
+
+override_dh_install:
+	dh_install
+	cp -a obj-*/libquazip5.a debian/tmp/usr/lib/*/
+	# cp -a build-static/quazip/libquazip1-qt5.a debian/tmp/usr/lib/*/ # this is for version 1.1
+	d-shlibmove --commit \
+		--multiarch \
+		--devunversioned \
+		--exclude-la \
+		--movedev "debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/pkgconfig/*.pc" "usr/lib/$(DEB_HOST_MULTIARCH)/pkgconfig/" \
+		--movedev "debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/cmake/QuaZip5/QuaZip5Config.cmake" "usr/share/quazip/" \
+		debian/tmp/usr/lib/*/*.so
+
+# 		--movedev "debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/cmake/QuaZip5/QuaZip5Config-*.cmake" "usr/share/quazip/" \ # this is for version 1.1
+
+override_dh_auto_test_in_version_1.1:
+ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
+	# somehow qztest executable is not build - do this manually here
+	cd build-shared/qztest && make
+	cd build-static/qztest && make
+	dh_auto_test -Bbuild-shared
+	dh_auto_test -Bbuild-static
+endif
+
+override_dh_makeshlibs:
+	dh_makeshlibs -- -c0 -v$(UPSTREAM_VERSION)

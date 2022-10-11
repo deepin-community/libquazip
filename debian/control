@@ -1,0 +1,91 @@
+Source: libquazip
+Maintainer: Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>
+Uploaders: Andreas Tille <tille@debian.org>,
+           Stefan Ahlers <stef.ahlers@t-online.de>,
+           Alf Gaida <agaida@siduction.org>
+Section: libs
+Priority: optional
+Build-Depends: debhelper-compat (= 13),
+               d-shlibs,
+               cmake,
+               qtbase5-dev,
+               qtchooser,
+               libxext-dev,
+               zlib1g-dev,
+               doxygen,
+               graphviz
+Standards-Version: 4.6.0
+Vcs-Browser: https://salsa.debian.org/med-team/libquazip
+Vcs-Git: https://salsa.debian.org/med-team/libquazip.git
+Homepage: https://github.com/stachenov/quazip
+Rules-Requires-Root: no
+
+Package: libquazip5-1
+Architecture: any
+Multi-Arch: same
+Section: libs
+Depends: ${shlibs:Depends},
+         ${misc:Depends}
+Suggests: libquazip-doc
+Pre-Depends: ${misc:Pre-Depends}
+Breaks: libquazip1-qt5
+Provides: libquazip1-qt5,
+          libquazip-qt5-1
+Replaces: libquazip1-qt5,
+          libquazip-qt5-1
+Description: C++ wrapper for ZIP/UNZIP
+ QuaZIP is a simple C++ wrapper over Gilles Vollant's ZIP/UNZIP package that
+ can be used to access ZIP archives. It uses Trolltech's Qt toolkit.
+ .
+ QuaZIP allows you to access files inside ZIP archives using QIODevice API,
+ and that means that you can also use QTextStream, QDataStream or
+ whatever you would like to use on your zipped files.
+ .
+ QuaZIP provides complete abstraction of the ZIP/UNZIP API, for both reading
+ from and writing to ZIP archives.
+ .
+ QuaZIP built using Qt5 libraries.
+
+Package: libquazip5-dev
+Architecture: any
+Multi-Arch: same
+Section: libdevel
+Depends: libquazip5-1 (= ${binary:Version}),
+         ${misc:Depends},
+         zlib1g-dev
+Breaks: libquazip-qt5-1-dev (<= 0.7-2),
+        libquazip-qt5-dev,
+        libquazip5-headers
+Replaces: libquazip-qt5-1-dev,
+          libquazip-qt5-dev,
+          libquazip5-headers
+Description: C++ wrapper for ZIP/UNZIP (development files)
+ QuaZIP is a simple C++ wrapper over Gilles Vollant's ZIP/UNZIP package that
+ can be used to access ZIP archives. It uses Trolltech's Qt toolkit.
+ .
+ QuaZIP allows you to access files inside ZIP archives using QIODevice API,
+ and that means that you can also use QTextStream, QDataStream or
+ whatever you would like to use on your zipped files.
+ .
+ QuaZIP provides complete abstraction of the ZIP/UNZIP API, for both reading
+ from and writing to ZIP archives.
+ .
+ This package contains the development files.
+
+Package: libquazip-doc
+Architecture: all
+Multi-Arch: foreign
+Section: doc
+Depends: ${misc:Depends}
+Description: C++ wrapper for ZIP/UNZIP (documentation)
+ QuaZIP is a simple C++ wrapper over Gilles Vollant's ZIP/UNZIP package that
+ can be used to access ZIP archives. It uses Trolltech's Qt toolkit.
+ .
+ QuaZIP allows you to access files inside ZIP archives using QIODevice API,
+ and that means that you can also use QTextStream, QDataStream or
+ whatever you would like to use on your zipped files.
+ .
+ QuaZIP provides complete abstraction of the ZIP/UNZIP API, for both reading
+ from and writing to ZIP archives.
+ .
+ This package contains the API documentation in HTML.
