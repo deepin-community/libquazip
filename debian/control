@@ -1,8 +1,5 @@
 Source: libquazip
-Maintainer: Debian Med Packaging Team <debian-med-packaging@lists.alioth.debian.org>
-Uploaders: Andreas Tille <tille@debian.org>,
-           Stefan Ahlers <stef.ahlers@t-online.de>,
-           Alf Gaida <agaida@siduction.org>
+Maintainer: Debian QA Group <packages@qa.debian.org>
 Section: libs
 Priority: optional
 Build-Depends: debhelper-compat (= 13),
@@ -13,10 +10,10 @@ Build-Depends: debhelper-compat (= 13),
                libxext-dev,
                zlib1g-dev,
                doxygen,
-               graphviz
-Standards-Version: 4.6.0
-Vcs-Browser: https://salsa.debian.org/med-team/libquazip
-Vcs-Git: https://salsa.debian.org/med-team/libquazip.git
+               graphviz,
+Standards-Version: 4.6.1
+Vcs-Browser: https://salsa.debian.org/debian/libquazip
+Vcs-Git: https://salsa.debian.org/debian/libquazip.git
 Homepage: https://github.com/stachenov/quazip
 Rules-Requires-Root: no
 
