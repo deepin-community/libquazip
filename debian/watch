@@ -1,4 +1,7 @@
 version=4
 
-opts=filenamemangle=s/.+\/v?(\d\S*)\.tar\.gz/quazip-$1\.tar\.gz/ \
-  https://github.com/stachenov/quazip/tags .*/v?(\d\S*)\.tar\.gz
+opts=dversionmangle=s/.*/0.No-Track/ \
+  https://people.debian.org/~eriberto/ FakeWatchNoUpstreamTrackingForThisPackage-(\d\S+)\.gz
+
+#opts=filenamemangle=s/.+\/v?(\d\S*)\.tar\.gz/quazip-$1\.tar\.gz/ \
+#  https://github.com/stachenov/quazip/tags .*/v?(\d\S*)\.tar\.gz
